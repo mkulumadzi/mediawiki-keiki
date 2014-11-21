@@ -1,22 +1,35 @@
 require 'rubygems'
 require_relative 'site.rb'
 
-input = ARGV[0]
-output = ARGV[1]
+class Cr3wler
 
-sources = File.open(input, "r").read.split(',')
-sources.each { |item| item.gsub!("'",'')}
+	attr_accessor :sources, :sites, :result
 
-result = File.new(output, "w")
+	def initialize(input_file, output_file)
+		load_search_strings(input_file)
+		load_sites
+		output_results_into_file(output_file)
+	end
 
-def search_wiki(sources)
-	sites = []
-	sources.each { |item| sites << Site.new(item)}
-	sites
+	def load_search_strings(input_file)
+		@sources = File.open(input_file, "r").read.split(',')
+		@sources.each { |item| item.gsub!("'",'')}
+	end
+
+	def load_sites
+		@sites = []
+		@sources.each { |item| @sites << Site.new(item)}
+	end
+
+	def output_results_into_file(output_file)
+		@result = File.new(output_file, "w")
+		@sites.each { |site| @result << site.title + "\t" + site.summary + "\n"}
+		@result.close
+	end
+
 end
 
-orgs = search_wiki(sources)
+new_search = Cr3wler.new(ARGV[0], ARGV[1])
 
-orgs.each { |org| result << org.title + "\t" + org.chopped.to_s + "\n"}
 
-result.close
+

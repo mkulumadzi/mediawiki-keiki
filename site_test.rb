@@ -1,32 +1,69 @@
-require 'test/unit'
+require 'minitest/spec'
+require 'minitest/autorun'
 require 'rubygems'
 require_relative 'site.rb'
 
-class SiteTest < Test::Unit::TestCase
+describe Site do
 
-	def setup
+	before do
 		@test_site = Site.new("Wikipedia")
 	end
 
-	def test_that_content_is_a_hash
-		assert_equal @test_site.content.class, Hash, "Site content is a hash"
+	it "has content that is a hash" do
+		@test_site.content.must_be_instance_of Hash
 	end
 
-	def test_that_text_summary_is_a_string
-		assert_equal @test_site.text_summary.class, String, "Site summary is a string"
+	it "has title Wikipedia" do
+		@test_site.title == "Wikipedia"
 	end
 
-	def test_that_summary_has_no_markdown_text
-		assert_nil @test_site.text_summary.index(/\n/)
-		assert_nil @test_site.text_summary.index("</ref>")
-		assert_nil @test_site.text_summary.index("({{")
-		assert_nil @test_site.text_summary.index("}")
-		assert_nil @test_site.text_summary.index(/\[\[File:(.*)\]\]/)
-		assert_nil @test_site.text_summary.index("|")
-		assert_nil @test_site.text_summary.index("[")
-		assert_nil @test_site.text_summary.index("]")
-		assert_nil @test_site.text_summary.index("'''")
+	it "has a summary that is a string" do
+		@test_site.text_summary.must_be_instance_of String
+	end
 
+	it "has parsed test that is a string" do
+		@test_site.text_parsed.must_be_instance_of String
+	end
+
+	it "does not have any new lines" do
+		@test_site.text_summary.index(/\n/).must_be_nil
+	end
+
+	it "does not have any links" do
+		@test_site.text_summary.index("</ref>").must_be_nil
+	end
+
+	it "does not have a heading" do
+		@test_site.text_summary.index("({{").must_be_nil
+	end
+
+	it "does not have any trailing curly braces" do
+		@test_site.text_summary.index("}").must_be_nil
+	end
+
+	it "does not have any files" do
+		@test_site.text_summary.index(/\[\[File:(.*)\]\]/).must_be_nil	
+	end
+
+	it "does not have any bars" do
+		@test_site.text_summary.index("|").must_be_nil
+	end
+
+	it "does not have any open square brackets" do
+		@test_site.text_summary.index("[").must_be_nil
+	end
+
+	it "does not have any closing square brackets" do
+		assert_nil @test_site.text_summary.index("]").must_be_nil
+	end
+
+	it "does not have any exhobitant quotes" do
+		@test_site.text_summary.index("'''").must_be_nil
+	end
+
+	it "is not a redirect" do
+		@test_site.text_summary.index("REDIRECT").must_be_nil
 	end
 
 end
+
