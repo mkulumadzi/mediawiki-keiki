@@ -7,9 +7,9 @@ class Site
 
 	def initialize(query)
 
-		load_wiki_pages(query)
+		load_wiki_page(query)
 
-		parse_wiki_pages
+		parse_wiki_page
 
 		if @redirect
 			self.setup(@redirect)
@@ -17,13 +17,13 @@ class Site
 
 	end
 
-	def load_wiki_pages(query)
+	def load_wiki_page(query)
 		query = query.gsub(' ','%20')
 		source_url = "http://en.wikipedia.org/w/api.php?format=json&action=query&titles=#{query}&prop=revisions&rvprop=content"
 		@content = JSON.parse(HTTParty.get(source_url).body)
 	end
 
-	def parse_wiki_pages
+	def parse_wiki_page
 		extract_page_id
 		get_title
 		get_summary
