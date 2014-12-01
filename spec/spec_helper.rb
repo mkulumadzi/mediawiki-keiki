@@ -1,23 +1,19 @@
 #Load the cr3wler file
-require_relative '../lib/cr3wler'
+require_relative '../lib/crawler'
 
 #dependencies
 require 'minitest/autorun'
 require 'webmock/minitest'
 require 'vcr'
-require 'turn'
+require 'pry'
+require 'minitest/reporters'
 
-Turn.config do |c|
- # :outline  - turn's original case/test outline mode [default]
- c.format  = :outline
- # turn on invoke/execute tracing, enable full backtrace
- c.trace   = true
- # use humanized test names (works only with :outline format)
- c.natural = true
-end
+#Minitest reporter 
+reporter_options = { color: true}
+Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(reporter_options)]
  
 #VCR config
-VCR.config do |c|
+VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/crawler_cassettes'
-  c.stub_with :webmock
+  c.hook_into :webmock
 end

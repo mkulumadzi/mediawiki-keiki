@@ -1,6 +1,6 @@
 require 'httparty'
 Dir[File.dirname(__FILE__) + '/crawler/*.rb'].each do |file|
-	require file
+  require file
 end
 
 # require_relative 'site.rb'
