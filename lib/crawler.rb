@@ -1,4 +1,7 @@
 require 'httparty'
+require 'wikicloth'
+require 'nokogiri'
+
 Dir[File.dirname(__FILE__) + '/crawler/*.rb'].each do |file|
   require file
 end

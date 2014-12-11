@@ -6,10 +6,11 @@ module Crawler
 
 		include HTTParty
 
-		base_uri 'http://en.wikipedia.org'
+		base_uri 'https://en.wikipedia.org'
 
 		def initialize(query)
 			@query = query
+			@page_hash = Hash.new
 		end
 
 		def query_result(force = false)
@@ -17,18 +18,21 @@ module Crawler
 		end
 
 		def pages
-			page_hash = Hash.new
-			query_result["query"]["pages"].keys.each do |p|
-				key = query_result["query"]["pages"][p]["title"].to_sym
-				page_hash[key] = Crawler::Site.new(query_result["query"]["pages"][p])
+			key_array = @query.split('|').sort
+			i = 0
+
+			query_result["query"]["pages"].each do |key, value|
+				@page_hash[key_array[i]] = Crawler::Site.new(value)
+				i += 1
 			end
-			page_hash
+
+			@page_hash
 		end
 
 		private
 
 		def get_query_result
-			self.class.get URI.encode("/w/api.php?continue=&format=json&action=query&titles=#{@query}&prop=revisions&rvprop=content")
+			self.class.get URI.encode("/w/api.php?continue=&format=json&action=query&titles=#{@query}&prop=revisions&rvprop=content&redirects")
 		end
 
 	end

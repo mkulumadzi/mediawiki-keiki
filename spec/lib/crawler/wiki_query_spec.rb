@@ -8,34 +8,29 @@ describe Crawler::WikiQuery do
 			Crawler::WikiQuery.must_include HTTParty
 		end
 
-		# # May come back to this later...
-		# it "must have a user-agent header" do
-		# 	Crawler::Site.headers["User-Agent"].must_equal "foo"
-		# end
-
 		it "must have the base url set to the Wikipedia API endpoint" do
-			Crawler::WikiQuery.base_uri.must_equal 'http://en.wikipedia.org'
+			Crawler::WikiQuery.base_uri.must_equal 'https://en.wikipedia.org'
 		end
 
 	end
 
 	describe "default instance attributes" do
 
-		let(:wiki_query) { Crawler::WikiQuery.new('Wikipedia')}
+		let(:wiki_query) { Crawler::WikiQuery.new('foo')}
 
 		it "must have a query" do
 			wiki_query.must_respond_to :query
 		end
 
 		it "must have the right query" do
-			wiki_query.query.must_equal 'Wikipedia'
+			wiki_query.query.must_equal 'foo'
 		end
 
 	end
 
 	describe "GET site" do
 
-		let(:wiki_query) { Crawler::WikiQuery.new('Wikipedia') }
+		let(:wiki_query) { Crawler::WikiQuery.new('foo') }
 
 		before do
 			VCR.insert_cassette 'wiki_query', :record => :new_episodes
@@ -46,7 +41,7 @@ describe Crawler::WikiQuery do
 		end
 
 		it "records the fixture" do
-			Crawler::WikiQuery.get('/w/api.php?continue=&format=json&action=query&titles=Wikipedia&prop=revisions&rvprop=content')
+			Crawler::WikiQuery.get('/w/api.php?continue=&format=json&action=query&titles=foo&prop=revisions&rvprop=content&redirects')
 		end
 
 		it "must have a query result method" do
@@ -71,8 +66,12 @@ describe Crawler::WikiQuery do
 				wiki_query.pages.must_be_instance_of Hash
 			end
 
+			it "must use keys in pages that match the original search terms" do
+				wiki_query.pages.keys[0].must_equal 'foo'
+			end
+
 			it "must store the pages as Site classes" do
-				wiki_query.pages[:Wikipedia].must_be_instance_of Crawler::Site
+				wiki_query.pages['foo'].must_be_instance_of Crawler::Site
 			end
 
 		end
@@ -97,10 +96,16 @@ describe Crawler::WikiQuery do
 
 		describe "multiple sites" do
 
-			let(:wiki_query) { Crawler::WikiQuery.new('foo|bar') }
+			let(:wiki_query) { Crawler::WikiQuery.new('foo|bar|camp') }
 
 			it "must return all of the sites" do
-				wiki_query.pages.length.must_equal 2
+				wiki_query.pages.length.must_equal 3
+			end
+
+			it "must tag the sites with the right query terms" do
+				wiki_query.pages['foo'].title.must_equal 'Foobar'
+				wiki_query.pages['bar'].title.must_equal 'Bar'
+				wiki_query.pages['camp'].title.must_equal 'Camp'
 			end
 
 		end

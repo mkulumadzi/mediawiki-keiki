@@ -18,6 +18,31 @@ module Crawler
 			revisions[0]["*"]
 		end
 
+		def to_html
+			WikiCloth::Parser.new( :data => content ).to_html
+		end
+
+		def to_text
+			Nokogiri::HTML(to_html).text
+		end
+
+		def summary
+			text_array = to_text.split("\n")
+
+			# text = text_array[0]
+
+			# i = 1
+
+			# while text.length <= 140 && i < text_array.length
+			# 	text << "\n" + text_array[i]
+			# 	i += 1
+			# end
+
+			# text
+
+			text_array[0].length <= 140? text_array[0] + "\n" + text_array[1] : text_array[0]
+		end
+
 	end
 
 end

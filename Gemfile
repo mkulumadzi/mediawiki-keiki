@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'httparty'
+gem 'wikicloth'
+gem 'nokogiri'
 
 group :test do
 	gem 'webmock'
