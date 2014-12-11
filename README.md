@@ -17,9 +17,9 @@ A Ruby API client for the [MediaWiki API](http://www.mediawiki.org/wiki/API:Main
 
 Install as a ruby gem
 
-'''shell
+```shell
 $ gem install mediawiki-keiki
-'''
+```
 
 Or add it to your application's `Gemfile`:
 
@@ -32,26 +32,24 @@ gem 'mediawiki-gateway'
 
 Create a simple query with a single page
 
-'''ruby
-
+```ruby
 query = WikiMedia::Query.new('foo')
-
-'''
+```
 
 Create a query with multiple pages
 
-'''ruby
+```ruby
 query = WikiMedia::Query.new('foo|bar')
-'''
+```
 
 Retrieve a page from a query
 
-'''ruby
+```ruby
 foo_page = query.pages['foo']
-'''
+```
 
 Get the summary of a page
 
-'''ruby
+```ruby
 puts foo_page.summary
-'''
+```
