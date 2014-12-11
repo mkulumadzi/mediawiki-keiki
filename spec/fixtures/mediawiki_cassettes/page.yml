@@ -1,0 +1,288 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://en.wikipedia.org/w/api.php?action=query&continue=&format=json&prop=revisions&redirects&rvprop=content&titles=Foolicious
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - crawler/1.0 (https://github.com/mkulumadzi/crawler)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Thu, 11 Dec 2014 21:20:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - HHVM/3.3.1
+      Cache-Control:
+      - private
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Vary:
+      - Accept-Encoding,X-Forwarded-Proto,Cookie
+      X-Varnish:
+      - 2731836967, 2909359885
+      Via:
+      - 1.1 varnish, 1.1 varnish
+      Age:
+      - '0'
+      X-Cache:
+      - cp1053 miss (0), cp1054 frontend miss (0)
+      X-Analytics:
+      - php=hhvm
+      Set-Cookie:
+      - GeoIP=::::v4; Path=/; Domain=.wikipedia.org
+    body:
+      encoding: UTF-8
+      string: '{"batchcomplete":"","query":{"pages":{"-1":{"ns":0,"title":"Foolicious","missing":""}}}}'
+    http_version: 
+  recorded_at: Thu, 11 Dec 2014 21:20:37 GMT
+- request:
+    method: get
+    uri: 'https://en.wikipedia.org/w/api.php?action=query&continue=&format=json&prop=revisions&redirects&rvprop=content&titles=Talk:'
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - crawler/1.0 (https://github.com/mkulumadzi/crawler)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Thu, 11 Dec 2014 21:20:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - HHVM/3.3.1
+      Cache-Control:
+      - private
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Vary:
+      - Accept-Encoding,X-Forwarded-Proto,Cookie
+      X-Varnish:
+      - 3117729054, 2909360272
+      Via:
+      - 1.1 varnish, 1.1 varnish
+      Age:
+      - '0'
+      X-Cache:
+      - cp1052 miss (0), cp1054 frontend miss (0)
+      X-Analytics:
+      - php=hhvm
+      Set-Cookie:
+      - GeoIP=::::v4; Path=/; Domain=.wikipedia.org
+    body:
+      encoding: UTF-8
+      string: '{"batchcomplete":"","query":{"pages":{"-1":{"title":"Talk:","invalid":""}}}}'
+    http_version: 
+  recorded_at: Thu, 11 Dec 2014 21:20:38 GMT
+- request:
+    method: get
+    uri: https://en.wikipedia.org/w/api.php?action=query&continue=&format=json&prop=revisions&redirects&rvprop=content&titles=foo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - crawler/1.0 (https://github.com/mkulumadzi/crawler)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Thu, 11 Dec 2014 21:20:38 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - HHVM/3.3.1
+      Cache-Control:
+      - private
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Vary:
+      - Accept-Encoding,X-Forwarded-Proto,Cookie
+      X-Varnish:
+      - 3999495143, 2909360740
+      Via:
+      - 1.1 varnish, 1.1 varnish
+      Age:
+      - '0'
+      X-Cache:
+      - cp1066 miss (0), cp1054 frontend miss (0)
+      X-Analytics:
+      - php=hhvm
+      Set-Cookie:
+      - GeoIP=::::v4; Path=/; Domain=.wikipedia.org
+    body:
+      encoding: UTF-8
+      string: '{"batchcomplete":"","query":{"normalized":[{"from":"foo","to":"Foo"}],"redirects":[{"from":"Foo","to":"Foobar"}],"pages":{"11178":{"pageid":11178,"ns":0,"title":"Foobar","revisions":[{"contentformat":"text/x-wiki","contentmodel":"wikitext","*":"{{Merge
+        to|Metasyntactic variable|date=September 2014}}\n\n{{Distinguish|FUBAR}}\n{{Redirect|Foo|other
+        uses|Foo (disambiguation)}}\n\nThe terms ''''''foobar'''''' ({{IPAc-en|\u02c8|f|u\u02d0|b|\u0251r}}),
+        ''''''fubar'''''', or ''''''foo'''''', ''''''bar'''''', ''''''baz'''''' and
+        ''''''qux'''''' (alternatively, ''''''quux'''''') and sometimes ''''''norf''''''<ref>http://www.vidyokarma.com/article.php?c=R-programming-language&page=1</ref>
+        are sometimes used as [[placeholder name]]s (also referred to as [[metasyntactic
+        variable]]s) in [[computer programming]] or computer-related documentation.<ref
+        name=\"rfc3092\" /> They have been used to name entities such as [[Variable
+        (computer science)|variable]]s, [[Function (computer science)|functions]],
+        and [[command (computing)|command]]s whose purpose is unimportant and serve
+        only to demonstrate a concept.  The words themselves have no meaning in this
+        usage.  ''''Foobar'''' is sometimes used alone; ''''foo'''', ''''bar'''',
+        and ''''baz'''' are sometimes used, when multiple entities are needed.\n\nThe
+        usage in [[computer programming]] examples and [[pseudocode]] varies; in certain
+        circles, it is used extensively, but many prefer descriptive names, while
+        others prefer to use single letters.  [[Eric S. Raymond]] has called it an
+        \"important hackerism\" alongside [[kludge]] and [[cruft]].<ref name=\"Raymond\">{{cite
+        book|url=http://books.google.com/books?id=g80P_4v4QbIC&lpg=PP1&pg=PA5|title=The
+        New Hacker''s Dictionary|author=[[Eric S. Raymond]]|publisher=[[MIT Press]]|year=1996|isbn=0-262-68092-0}}</ref>\n\n==
+        History and etymology ==\n\n[[File:Smokeycover.jpg|thumb|upright|[[Smokey
+        Stover]]<!-- no italics, character\u2019s name --> driving a \"foomobile\",
+        with ''''phoo'''' visible on the front]]\nThe word ''''foo'''' originated
+        as a [[nonsense word]] from the 1930s, the military term [[FUBAR]] emerged
+        in the 1940s, and the use of ''''foo'''' in a programming context is generally
+        credited to the [[Tech Model Railroad Club]] (TMRC) of [[Massachusetts Institute
+        of Technology|MIT]] from circa 1960.<ref>{{cite web|url=http://www.ietf.org/rfc/rfc3092.txt|title=Etymology
+        of \"Foo\"}}</ref> However, the precise relationship of these terms is not
+        known with certainty, and several anecdotal theories have been advanced to
+        identify them.\n\nThe etymology of ''''foo'''' is explored in the [[Internet
+        Engineering Task Force]] (IETF) RFC 3092, which gives the earliest documented
+        use as being in the 1930s comic ''''[[Smokey Stover]]'''' by [[Bill Holman
+        (cartoonist)|Bill Holman]], where it is used as a nonsense word.<ref name=\"jargon\">http://catb.org/jargon/html/F/foo.html
+        foo</ref><ref>http://catb.org/jargon/html/index.html</ref> Holman states that
+        he used the word due to having seen it on bottom of a jade Chinese figurine
+        in [[Chinatown, San Francisco]], meaning \"good luck\".<ref>http://www.smokey-stover.com/history.html</ref><ref>[http://www.smokey-stover.com/
+        smokey-stover.com]</ref><ref>http://members.aol.com/EOCostello/</ref> This
+        is presumably as a transliteration of the [[fu character]] (f\u00fa, \u798f),
+        which is a common character for fortune, and figurines of the trio of eponymous
+        male \"star gods\" ''''[[Fu Lu Shou|F\u00fa, L\u00f9, Sh\u00f2u]]'''' are
+        common in Chinese communities; compare [[Fu Manchu]], fictional character
+        popular in the 1930s. ''''Smokey Stover'''' ran 1935\u201373, and continued
+        to feature ''''foo'''' prominently, as on the front of the \"foomobile\" illustrated
+        in the cover at right. The word ''''foo'''' became very popular in the 1930s,
+        and also appeared in other cartoons including the ''''[[Looney Tunes]]''''
+        cartoons of [[Bob Clampett]] such as ''''[[The Daffy Doc]]'''' and ''''[[Porky
+        in Wackyland]]'''' (both 1938, with [[Daffy Duck]] and [[Porky Pig]]), and
+        in other comic strips such as ''''[[Pogo (comics)|Pogo]]''''.\n\nFrom there,
+        the Foo migrated into military slang, merged with \"FU\" of the [[FUBAR]].<ref
+        name=\"rfc3092\">{{cite web|url=http://www.ietf.org/rfc/rfc3092.txt|title=Etymology
+        of \"Foo\"|author=D. Eastlake III et al.|year=2001|publisher=[[Internet Engineering
+        Task Force]]|accessdate=2007-11-05}}</ref> The term ''''[[foo fighter]]''''
+        was used by [[Allies of World War II|Allied]] aircraft pilots in [[World War
+        II]] to describe various [[unidentified flying object|UFOs]] or mysterious
+        aerial phenomena.\n\nThe first known use of the terms in print in a programming
+        context appears in a 1965 edition of MIT''s \"Tech Engineering News\".<ref>{{cite
+        book|url=http://books.google.com/books?id=aOQRAQAAMAAJ&q=foobar&dq=foobar&source=bl&ots=vuAhTreOhj&sig=Xk-_9ZRIXoyQ_F_gvvDflYKzXwI&hl=en&sa=X&ei=jUEkUI_ZDoPY2QWrjoHACA&ved=0CDoQ6AEwAQ|title=Tech
+        Engineering News, Volume 47|year=1965|publisher=[[Massachusetts Institute
+        of Technology]]|page=63|quote=Further, it is possible to search for an effective
+        address; e.g., if an instruction such as \"add 1 foo\" were used, specifying
+        indirect addressing thru location \"foo\", and location \"foo\" contained
+        the address of location \"foobar\", than an effective word search for \"foobar\"
+        would find location \"foo\" and the location containing the \"add\" instruction
+        as well.}}</ref> ''''Foobar'''' may have come about as a result of the pre-existing
+        \"Foo\" being conjoined with \"bar\" an addition borrowed from the military''s
+        FUBAR. The use of ''''foo'''' in hacker and eventually in programming context
+        may have begun in MIT''s [[Tech Model Railroad Club]] (TMRC). In the complex
+        model system, there were [[scram]] switches located at numerous places around
+        the room that could be thrown if something undesirable was about to occur,
+        such as a train going full-bore at an obstruction. Another feature of the
+        system was a digital clock on the dispatch board. When someone hit a scram
+        switch the clock stopped and the display was replaced with the word \"FOO\";
+        at TMRC the scram switches are therefore called \"Foo switches\". Because
+        of this, an entry in the 1959 Dictionary of the TMRC Language went something
+        like this: \"FOO: The first syllable of the misquoted sacred chant phrase
+        ''[[Om mani padme hum|foo mane padme hum]].'' Our first obligation is to keep
+        the foo counters turning.\"<ref>{{cite web|url=http://www.computer-dictionary-online.org/?q=foo|title=Computer
+        Dictionary Online}}, computer-dictionary-online.org</ref> One book{{which|date=November
+        2010}} describing the MIT train room describes two buttons by the door: labelled
+        foo and bar. These were general purpose buttons and were often re-purposed
+        for whatever fun idea the MIT hackers had at the time, hence the adoption
+        of foo and bar as general purpose variable names. An entry in the \"Abridged
+        Dictionary of the TMRC Language\" states:<ref>{{cite web|url=http://tmrc.mit.edu/dictionary.html|title=Abridged
+        Dictionary of the TMRC Language|publisher=[[MIT]]}}</ref>\n\n{{Quote|text
+        = Multiflush: stop-all-trains-button. Next best thing to the red door button.
+        Also called FOO. Displays \"FOO\" on the clock when used.}}\n\nThe term ''''foobar''''
+        was propagated through computer science circles in the 1960s and early 1970s
+        by system manuals from [[Digital Equipment Corporation]].{{citation needed|date=May
+        2009}} ''''Foobar'''' was also used as a variable name in the [[Fortran]]
+        code of ''''[[Colossal Cave Adventure]]'''' (1977 Crowther and Woods version).
+        The variable FOOBAR was used to contain the player''s progress in saying the
+        magic phrase \"Fee Fie Foe Foo\".\n\nFoo''s use in code is indeed as a place
+        holder for an as yet unnamed object. The fact that it is often followed by
+        Bar as another placeholder is due to the popularity of the 1987 movie Lethal
+        Weapon. In the movie the lead makes reference to FUBAR. Foo however is not
+        the same as FU. Foo was originally from Foo Fighters and that a Foo is an
+        unidentified object. Foo and Fubar have been conflated as the majority of
+        people are unfamiliar with Foo Fighters.\n\n==Usage in code==\nThe terms are
+        very often used in programming examples, much like the [[Hello World]] program
+        is commonly used as an introduction.  For example, ''''foo'''' and ''''bar''''
+        might be used to illustrate a simple string concatenation:\n\n<syntaxhighlight
+        lang=\"c\">\n/* C code */\n\n#include <stdio.h>\n\nint main()\n{\n   char
+        *foo = \"Hello\";\n   char *bar = \"World!\";\n   fprintf(stdout, \"%s %s\\n\",
+        foo, bar);\n\n   return 0;\n}\n</syntaxhighlight>\nAlso see  [[metasyntactic
+        variables#Programming language examples|metasyntactic variables]].\n\n==Usage
+        in speech==\nThe terms are used in speech in an analogous way, although older
+        synonyms may be used.  For example, \"''''Some function foo'''' will then
+        be called\".  In these cases, ''''foo'''' and ''''bar'''' are synonyms for
+        ''''whatever'''' or ''''whichever''''. Or: \"A database record for user ''''foo''''\"
+        is synonymous with: \"A database record for user ''''whoever''''\".\n\n==Usage
+        in culture==\n''''$foo'''' is the name of a [[Perl]] programming magazine,<ref>[http://foo-magazin.de/
+        foo-magazin.de] {{de icon}}</ref> and [[Foo Camp]] is an annual [[hacker convention]].\n\nDuring
+        the ''''[[United States v. Microsoft Corp.]]'''' trial, some evidence was
+        presented that Microsoft had tried to use the [[Web Services Interoperability]]
+        organization as a means to stifle competition, including e-mails in which
+        top executives including [[Bill Gates]] referred to the WS-I using the codename
+        \"foo\".<ref>[http://www.news.com/Microsoft-ploy-to-block-Sun-exposed/2100-1001_3-912906.html
+        Microsoft ploy to block Sun exposed], news.com</ref>\n\nThese terms gave the
+        name to [[foobar2000]], an audio player independently developed using C++,
+        as its author was more focused on producing a functional program than on aesthetics.\n\nThere
+        is a character named \"Master Foo\" in ''''Rootless Root'''', a collection
+        of [[hacker koans]].\n\nGoogle releases https://google.com/foobar in November
+        2014.\n\n== See also ==\n{{Portal|Computer programming}}\n* [[BarCamp]], an
+        international network of user generated conferences\n* [[Foo Camp]], an annual
+        hacker event hosted by publisher O''Reilly Media\n* [[Foobar2000]], a highly
+        customizable audio player which name is derived from foobar\n* [[Placeholder
+        name]]\n* [[Snafu]]\n* [[xyzzy (computing)|xyzzy]]\n{{Clear}}\n\n== References
+        ==\n{{Reflist|30em}}\n\n== External links ==\n{{wiktionary|foobar|foo|bar}}\n*
+        [http://tools.ietf.org/html/rfc3092 RFC3092 Etymology of \"Foo\"], tools.ietf.org\n*
+        [http://foldoc.org/index.cgi?query=foo The Free Online Dictionary of Computing
+        entry on \"foo\"], foldoc.org\n* [http://www.catb.org/jargon/html/F/foo.html
+        The Jargon File entry on \"foobar\"], catb.org\n* RFC 1639 \u2013 FTP Operation
+        Over Big Address Records (FOOBAR)\n\n[[Category:Placeholder names]]\n[[Category:Variable
+        (computer programming)]]"}]}}}}'
+    http_version: 
+  recorded_at: Thu, 11 Dec 2014 21:20:38 GMT
+recorded_with: VCR 2.9.3

@@ -1,22 +1,26 @@
 require_relative '../../spec_helper'
 
-describe Crawler::WikiQuery do
+describe MediaWiki::Query do
 
 	describe "default attributes" do
 
 		it "must include httparty methods" do
-			Crawler::WikiQuery.must_include HTTParty
+			MediaWiki::Query.must_include HTTParty
 		end
 
 		it "must have the base url set to the Wikipedia API endpoint" do
-			Crawler::WikiQuery.base_uri.must_equal 'https://en.wikipedia.org'
+			MediaWiki::Query.base_uri.must_equal 'https://en.wikipedia.org'
+		end
+
+		it "must have the User-Agent header" do
+			MediaWiki::Query.headers["User-Agent"].must_equal "crawler/1.0 (https://github.com/mkulumadzi/crawler)"
 		end
 
 	end
 
 	describe "default instance attributes" do
 
-		let(:wiki_query) { Crawler::WikiQuery.new('foo')}
+		let(:wiki_query) { MediaWiki::Query.new('foo')}
 
 		it "must have a query" do
 			wiki_query.must_respond_to :query
@@ -30,7 +34,7 @@ describe Crawler::WikiQuery do
 
 	describe "GET site" do
 
-		let(:wiki_query) { Crawler::WikiQuery.new('foo') }
+		let(:wiki_query) { MediaWiki::Query.new('foo') }
 
 		before do
 			VCR.insert_cassette 'wiki_query', :record => :new_episodes
@@ -41,7 +45,7 @@ describe Crawler::WikiQuery do
 		end
 
 		it "records the fixture" do
-			Crawler::WikiQuery.get('/w/api.php?continue=&format=json&action=query&titles=foo&prop=revisions&rvprop=content&redirects')
+			MediaWiki::Query.get('/w/api.php?continue=&format=json&action=query&titles=foo&prop=revisions&rvprop=content&redirects')
 		end
 
 		it "must have a query result method" do
@@ -71,7 +75,7 @@ describe Crawler::WikiQuery do
 			end
 
 			it "must store the pages as Site classes" do
-				wiki_query.pages['foo'].must_be_instance_of Crawler::Site
+				wiki_query.pages['foo'].must_be_instance_of MediaWiki::Page
 			end
 
 		end
@@ -96,7 +100,7 @@ describe Crawler::WikiQuery do
 
 		describe "multiple sites" do
 
-			let(:wiki_query) { Crawler::WikiQuery.new('foo|bar|camp') }
+			let(:wiki_query) { MediaWiki::Query.new('foo|bar|camp') }
 
 			it "must return all of the sites" do
 				wiki_query.pages.length.must_equal 3
@@ -106,6 +110,22 @@ describe Crawler::WikiQuery do
 				wiki_query.pages['foo'].title.must_equal 'Foobar'
 				wiki_query.pages['bar'].title.must_equal 'Bar'
 				wiki_query.pages['camp'].title.must_equal 'Camp'
+			end
+
+		end
+
+		describe "give warning if WikiMedia API limit of 50 sites exceeded" do
+
+			search_string = ""
+
+			("1".."51").each { |x| search_string << x + "|"}
+
+			search_string = search_string.chomp("|")
+
+			it "must throw an error if search string has more than 50 sites" do
+				assert_raises ArgumentError do
+					MediaWiki::Query.new("#{search_string}".to_s)
+				end
 			end
 
 		end

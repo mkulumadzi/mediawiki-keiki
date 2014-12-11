@@ -1,16 +1,16 @@
-module Crawler
+module MediaWiki
 
-	class Site
+	class Page
 
-		attr_reader :site_data
+		attr_reader :page_data
 
 		def initialize(hash)
-			@site_data = hash
+			@page_data = hash
 		end
 
 		# Modify method_missing to return results if a matching key can be found within the page hash
 		def method_missing(name, *args, &block)
-			@site_data.has_key?(name.to_s) ? @site_data[name.to_s] : super
+			@page_data.has_key?(name.to_s) ? @page_data[name.to_s] : super
 		end
 
 		# Gets the content by looking inside the 'revisions' key in the page hash
@@ -18,29 +18,29 @@ module Crawler
 			revisions[0]["*"]
 		end
 
+		# Uses the WikiCloth gem to convert the content from WikiMarkup to HTML
 		def to_html
 			WikiCloth::Parser.new( :data => content ).to_html
 		end
 
+		# Converts the content to plain text
 		def to_text
 			Nokogiri::HTML(to_html).text
 		end
 
+		# Returns a short summary that is at least 140 characters long
 		def summary
 			text_array = to_text.split("\n")
+			text = text_array[0]
+			i = 1
 
-			# text = text_array[0]
+			while text.length <= 140 && i < text_array.length
+				text << "\n" + text_array[i]
+				i += 1
+			end
 
-			# i = 1
+			text
 
-			# while text.length <= 140 && i < text_array.length
-			# 	text << "\n" + text_array[i]
-			# 	i += 1
-			# end
-
-			# text
-
-			text_array[0].length <= 140? text_array[0] + "\n" + text_array[1] : text_array[0]
 		end
 
 	end

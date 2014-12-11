@@ -1,5 +1,5 @@
-#Load the cr3wler file
-require_relative '../lib/crawler'
+#Load the MediaWiki file
+require_relative '../lib/mediawiki'
 
 #dependencies
 require 'minitest/autorun'
@@ -14,6 +14,6 @@ Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(reporter_opti
  
 #VCR config
 VCR.configure do |c|
-  c.cassette_library_dir = 'spec/fixtures/crawler_cassettes'
+  c.cassette_library_dir = 'spec/fixtures/mediawiki_cassettes'
   c.hook_into :webmock
 end
