@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://en.wikipedia.org/w/api.php?action=query&continue=&format=json&prop=revisions&redirects&rvprop=content&titles=Foolicious
+    uri: ! 'https://en.wikipedia.org/w/api.php?action=query&continue=&format=json&prop=revisions&redirects&rvprop=content&titles=Talk:'
     body:
       encoding: US-ASCII
       string: ''
@@ -17,7 +17,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Thu, 11 Dec 2014 21:20:37 GMT
+      - Thu, 11 Dec 2014 23:12:12 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -35,73 +35,22 @@ http_interactions:
       Vary:
       - Accept-Encoding,X-Forwarded-Proto,Cookie
       X-Varnish:
-      - 2731836967, 2909359885
+      - 3125747549, 3159147885
       Via:
       - 1.1 varnish, 1.1 varnish
       Age:
       - '0'
       X-Cache:
-      - cp1053 miss (0), cp1054 frontend miss (0)
+      - cp1052 miss (0), cp1052 frontend miss (0)
       X-Analytics:
       - php=hhvm
       Set-Cookie:
       - GeoIP=::::v4; Path=/; Domain=.wikipedia.org
-    body:
-      encoding: UTF-8
-      string: '{"batchcomplete":"","query":{"pages":{"-1":{"ns":0,"title":"Foolicious","missing":""}}}}'
-    http_version: 
-  recorded_at: Thu, 11 Dec 2014 21:20:37 GMT
-- request:
-    method: get
-    uri: 'https://en.wikipedia.org/w/api.php?action=query&continue=&format=json&prop=revisions&redirects&rvprop=content&titles=Talk:'
     body:
       encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - crawler/1.0 (https://github.com/mkulumadzi/crawler)
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx/1.1.19
-      Date:
-      - Thu, 11 Dec 2014 21:20:37 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      X-Powered-By:
-      - HHVM/3.3.1
-      Cache-Control:
-      - private
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      Vary:
-      - Accept-Encoding,X-Forwarded-Proto,Cookie
-      X-Varnish:
-      - 3117729054, 2909360272
-      Via:
-      - 1.1 varnish, 1.1 varnish
-      Age:
-      - '0'
-      X-Cache:
-      - cp1052 miss (0), cp1054 frontend miss (0)
-      X-Analytics:
-      - php=hhvm
-      Set-Cookie:
-      - GeoIP=::::v4; Path=/; Domain=.wikipedia.org
-    body:
-      encoding: UTF-8
-      string: '{"batchcomplete":"","query":{"pages":{"-1":{"title":"Talk:","invalid":""}}}}'
+      string: ! '{"batchcomplete":"","query":{"pages":{"-1":{"title":"Talk:","invalid":""}}}}'
     http_version: 
-  recorded_at: Thu, 11 Dec 2014 21:20:38 GMT
+  recorded_at: Thu, 11 Dec 2014 23:12:12 GMT
 - request:
     method: get
     uri: https://en.wikipedia.org/w/api.php?action=query&continue=&format=json&prop=revisions&redirects&rvprop=content&titles=foo
@@ -119,7 +68,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Thu, 11 Dec 2014 21:20:38 GMT
+      - Thu, 11 Dec 2014 23:12:13 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -137,20 +86,20 @@ http_interactions:
       Vary:
       - Accept-Encoding,X-Forwarded-Proto,Cookie
       X-Varnish:
-      - 3999495143, 2909360740
+      - 4008007019, 3159148201
       Via:
       - 1.1 varnish, 1.1 varnish
       Age:
       - '0'
       X-Cache:
-      - cp1066 miss (0), cp1054 frontend miss (0)
+      - cp1066 miss (0), cp1052 frontend miss (0)
       X-Analytics:
       - php=hhvm
       Set-Cookie:
       - GeoIP=::::v4; Path=/; Domain=.wikipedia.org
     body:
-      encoding: UTF-8
-      string: '{"batchcomplete":"","query":{"normalized":[{"from":"foo","to":"Foo"}],"redirects":[{"from":"Foo","to":"Foobar"}],"pages":{"11178":{"pageid":11178,"ns":0,"title":"Foobar","revisions":[{"contentformat":"text/x-wiki","contentmodel":"wikitext","*":"{{Merge
+      encoding: US-ASCII
+      string: ! '{"batchcomplete":"","query":{"normalized":[{"from":"foo","to":"Foo"}],"redirects":[{"from":"Foo","to":"Foobar"}],"pages":{"11178":{"pageid":11178,"ns":0,"title":"Foobar","revisions":[{"contentformat":"text/x-wiki","contentmodel":"wikitext","*":"{{Merge
         to|Metasyntactic variable|date=September 2014}}\n\n{{Distinguish|FUBAR}}\n{{Redirect|Foo|other
         uses|Foo (disambiguation)}}\n\nThe terms ''''''foobar'''''' ({{IPAc-en|\u02c8|f|u\u02d0|b|\u0251r}}),
         ''''''fubar'''''', or ''''''foo'''''', ''''''bar'''''', ''''''baz'''''' and
@@ -284,5 +233,56 @@ http_interactions:
         Over Big Address Records (FOOBAR)\n\n[[Category:Placeholder names]]\n[[Category:Variable
         (computer programming)]]"}]}}}}'
     http_version: 
-  recorded_at: Thu, 11 Dec 2014 21:20:38 GMT
+  recorded_at: Thu, 11 Dec 2014 23:12:12 GMT
+- request:
+    method: get
+    uri: https://en.wikipedia.org/w/api.php?action=query&continue=&format=json&prop=revisions&redirects&rvprop=content&titles=Foolicious
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - crawler/1.0 (https://github.com/mkulumadzi/crawler)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.1.19
+      Date:
+      - Thu, 11 Dec 2014 23:12:14 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - HHVM/3.3.1
+      Cache-Control:
+      - private
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Vary:
+      - Accept-Encoding,X-Forwarded-Proto,Cookie
+      X-Varnish:
+      - 2741188462, 3159149986
+      Via:
+      - 1.1 varnish, 1.1 varnish
+      Age:
+      - '0'
+      X-Cache:
+      - cp1053 miss (0), cp1052 frontend miss (0)
+      X-Analytics:
+      - php=hhvm
+      Set-Cookie:
+      - GeoIP=::::v4; Path=/; Domain=.wikipedia.org
+    body:
+      encoding: US-ASCII
+      string: ! '{"batchcomplete":"","query":{"pages":{"-1":{"ns":0,"title":"Foolicious","missing":""}}}}'
+    http_version: 
+  recorded_at: Thu, 11 Dec 2014 23:12:14 GMT
 recorded_with: VCR 2.9.3

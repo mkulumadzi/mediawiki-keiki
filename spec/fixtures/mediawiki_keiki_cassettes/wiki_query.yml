@@ -17,11 +17,11 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Thu, 11 Dec 2014 21:39:39 GMT
+      - Thu, 11 Dec 2014 23:12:14 GMT
       Content-Type:
       - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '10841'
       Connection:
       - keep-alive
       X-Powered-By:
@@ -35,20 +35,22 @@ http_interactions:
       Vary:
       - Accept-Encoding,X-Forwarded-Proto,Cookie
       X-Varnish:
-      - 4001003081, 2911283017
+      - 4008008769, 3159150566
       Via:
       - 1.1 varnish, 1.1 varnish
+      Accept-Ranges:
+      - bytes
       Age:
       - '0'
       X-Cache:
-      - cp1066 miss (0), cp1054 frontend miss (0)
+      - cp1066 miss (0), cp1052 frontend miss (0)
       X-Analytics:
       - php=hhvm
       Set-Cookie:
       - GeoIP=::::v4; Path=/; Domain=.wikipedia.org
     body:
-      encoding: UTF-8
-      string: '{"batchcomplete":"","query":{"normalized":[{"from":"foo","to":"Foo"}],"redirects":[{"from":"Foo","to":"Foobar"}],"pages":{"11178":{"pageid":11178,"ns":0,"title":"Foobar","revisions":[{"contentformat":"text/x-wiki","contentmodel":"wikitext","*":"{{Merge
+      encoding: US-ASCII
+      string: ! '{"batchcomplete":"","query":{"normalized":[{"from":"foo","to":"Foo"}],"redirects":[{"from":"Foo","to":"Foobar"}],"pages":{"11178":{"pageid":11178,"ns":0,"title":"Foobar","revisions":[{"contentformat":"text/x-wiki","contentmodel":"wikitext","*":"{{Merge
         to|Metasyntactic variable|date=September 2014}}\n\n{{Distinguish|FUBAR}}\n{{Redirect|Foo|other
         uses|Foo (disambiguation)}}\n\nThe terms ''''''foobar'''''' ({{IPAc-en|\u02c8|f|u\u02d0|b|\u0251r}}),
         ''''''fubar'''''', or ''''''foo'''''', ''''''bar'''''', ''''''baz'''''' and
@@ -182,7 +184,7 @@ http_interactions:
         Over Big Address Records (FOOBAR)\n\n[[Category:Placeholder names]]\n[[Category:Variable
         (computer programming)]]"}]}}}}'
     http_version: 
-  recorded_at: Thu, 11 Dec 2014 21:39:39 GMT
+  recorded_at: Thu, 11 Dec 2014 23:12:14 GMT
 - request:
     method: get
     uri: https://en.wikipedia.org/w/api.php?action=query&continue=&format=json&prop=revisions&redirects&rvprop=content&titles=foo%7Cbar%7Ccamp
@@ -200,7 +202,7 @@ http_interactions:
       Server:
       - nginx/1.1.19
       Date:
-      - Thu, 11 Dec 2014 21:39:40 GMT
+      - Thu, 11 Dec 2014 23:12:15 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -218,20 +220,20 @@ http_interactions:
       Vary:
       - Accept-Encoding,X-Forwarded-Proto,Cookie
       X-Varnish:
-      - 3119165697, 2911284111
+      - 3125750001, 3159151522
       Via:
       - 1.1 varnish, 1.1 varnish
       Age:
       - '0'
       X-Cache:
-      - cp1052 miss (0), cp1054 frontend miss (0)
+      - cp1052 miss (0), cp1052 frontend miss (0)
       X-Analytics:
       - php=hhvm
       Set-Cookie:
       - GeoIP=::::v4; Path=/; Domain=.wikipedia.org
     body:
-      encoding: UTF-8
-      string: '{"batchcomplete":"","query":{"normalized":[{"from":"foo","to":"Foo"},{"from":"bar","to":"Bar"},{"from":"camp","to":"Camp"}],"redirects":[{"from":"Foo","to":"Foobar"}],"pages":{"3360":{"pageid":3360,"ns":0,"title":"Bar","revisions":[{"contentformat":"text/x-wiki","contentmodel":"wikitext","*":"{{Wiktionary|Bar|bar|-bar}}\n''''''Bar''''''
+      encoding: US-ASCII
+      string: ! '{"batchcomplete":"","query":{"normalized":[{"from":"foo","to":"Foo"},{"from":"bar","to":"Bar"},{"from":"camp","to":"Camp"}],"redirects":[{"from":"Foo","to":"Foobar"}],"pages":{"3360":{"pageid":3360,"ns":0,"title":"Bar","revisions":[{"contentformat":"text/x-wiki","contentmodel":"wikitext","*":"{{Wiktionary|Bar|bar|-bar}}\n''''''Bar''''''
         or ''''''BAR'''''' may refer to:\n{{TOC right}}\n==Food and drink==\n* [[Bar
         (establishment)]], a retail establishment that serves alcoholic beverages;
         also the counter at which drinks are served\n* [[Dessert bar]], a type of
@@ -456,5 +458,5 @@ http_interactions:
         Over Big Address Records (FOOBAR)\n\n[[Category:Placeholder names]]\n[[Category:Variable
         (computer programming)]]"}]}}}}'
     http_version: 
-  recorded_at: Thu, 11 Dec 2014 21:39:40 GMT
+  recorded_at: Thu, 11 Dec 2014 23:12:15 GMT
 recorded_with: VCR 2.9.3
