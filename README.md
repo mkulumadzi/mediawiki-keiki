@@ -5,12 +5,12 @@ A Ruby API client for the [MediaWiki API](http://www.mediawiki.org/wiki/API:Main
 ## Features
 
 * Query the WikiMedia API, returning JSON documents
-** Multiple pages supported
+- Multiple pages supported
 * Retrieve data from WikiMedia pages, including
-** Title
-** Full text
-** Full text as HTML
-** Short text summary
+- Title
+- Full text
+- Full text as HTML
+- Short text summary
 
 
 ## Installation
