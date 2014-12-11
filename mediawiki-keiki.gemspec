@@ -25,17 +25,3 @@ Gem::Specification.new do |s|
 	s.add_runtime_dependency 'minitest-reporters', '~> 0.14.24'
 
 end
-
-
-# gem 'httparty'
-# gem 'wikicloth'
-# gem 'nokogiri'
-
-# group :test do
-# 	gem 'webmock'
-# 	gem 'vcr'
-# 	gem 'turn'
-# 	gem 'rake'
-# 	gem 'pry'
-# 	gem 'minitest-reporters'
-# end
