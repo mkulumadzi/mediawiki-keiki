@@ -10,4 +10,4 @@ Gemfile.lock
 .ruby-gemset
 
 # VCR fixtures
-/spec/fixtures/mediawiki_cassettes/*
+/spec/fixtures/mediawiki_keiki_cassettes/*
