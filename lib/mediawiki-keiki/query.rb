@@ -111,7 +111,7 @@ module MediaWiki
 		def get_redirects_for(result_map, redirects)
 			result_map.each do |rm|
 				redirects.each do |r|
-					rm[:redirected] = r["to"] if r["from"] == rm[:search_term] || rm[:normalized]
+					rm[:redirected] = r["to"] if r["from"] == rm[:search_term] ||  r["from"] == rm[:normalized]
 				end
 			end
 			result_map
@@ -121,15 +121,6 @@ module MediaWiki
 		def get_query_map(map_type)
 			query_result["query"][map_type] # if query_result["query"][map_type]
 		end
-
-		# # Use the query maps to update the values of the result map
-		# def map_from_to(result_map, query_map)
-		# 	result_map.each do |key, value|
-		# 		query_map.each { |hash| value = hash["to"] if hash["from"] == value }
-		# 	end
-		# 	result_map
-		# end
-
 
 		private
 

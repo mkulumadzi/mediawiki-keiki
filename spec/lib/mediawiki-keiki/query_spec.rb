@@ -63,7 +63,6 @@ describe MediaWiki::Query do
 		describe "dynamic attributes" do
 
 			before do
-				# wiki_query.query_result
 				@initialized_result_map = [{:search_term => "foo"}]
 				@normalized_hash_array = [{"from"=>"foo", "to" =>"Foo"}]
 				@redirected_hash_array = [{"from" => "Foo", "to" => "Foobar"}]
@@ -90,14 +89,6 @@ describe MediaWiki::Query do
 			it "must get redirects for the original or normalized search terms" do
 				wiki_query.get_redirects_for(@normalized_map, @redirected_hash_array).must_equal @redirected_map
 			end
-
-			# it "must apply the noramalization map to the results map" do
-			# 	wiki_query.map_from_to({"foo"=>"foo"}, @normalized_hash_array).must_equal @normalized_map
-			# end
-
-			# it "must apply the redirects map to the normalized result map" do
-			# 	wiki_query.map_from_to(@normalized_map,@redirected_hash_array).must_equal @redirected_map
-			# end
 
 			it "must map the original query to the normalized, redirected title" do
 				wiki_query.map_query_to_results.must_equal @redirected_map
@@ -172,26 +163,193 @@ describe MediaWiki::Query do
 
 		describe "multiple pages" do
 
-			let(:wiki_query) { MediaWiki::Query.new('Partners In Health|ThoughtWorks|Accion International') }
+			let(:wiki_query) { MediaWiki::Query.new('foo|bar|a|b|c|Jimmy Fallon|Seth Rogan|Mesopotamia') }
+
+			before do
+				@expected_keys = ['foo','bar','a','b','c','Jimmy Fallon','Seth Rogan','Mesopotamia']
+				@initialized_map = [
+					{
+						:search_term => 'foo'
+					},
+					{
+						:search_term => 'bar'
+					},
+					{
+						:search_term => 'a'
+					},
+					{
+						:search_term => 'b'
+					},
+					{
+						:search_term => 'c'
+					},
+					{
+						:search_term => 'Jimmy Fallon'
+					},
+					{
+						:search_term => 'Seth Rogan'
+					},
+					{
+						:search_term => 'Mesopotamia'
+					}
+				]
+				@normalizations = [
+					{
+						'from' => 'foo',
+						'to' => 'Foo'
+					},
+					{
+						'from' => 'bar',
+						'to' => 'Bar'
+					},
+					{
+						'from' => 'a',
+						'to' => 'A'
+					},
+					{
+						'from' => 'b',
+						'to' => 'B'
+					},
+					{
+						'from' => 'c',
+						'to' => 'C'
+					}
+				]
+				@expected_normalized_map = [
+					{
+						:search_term => 'foo',
+						:normalized => 'Foo'
+					},
+					{
+						:search_term => 'bar',
+						:normalized => 'Bar'
+					},
+					{
+						:search_term => 'a',
+						:normalized => 'A'
+					},
+					{
+						:search_term => 'b',
+						:normalized => 'B'
+					},
+					{
+						:search_term => 'c',
+						:normalized => 'C'
+					},
+					{
+						:search_term => 'Jimmy Fallon'
+					},
+					{
+						:search_term => 'Seth Rogan'
+					},
+					{
+						:search_term => 'Mesopotamia'
+					}
+				]
+				@expected_results_map = [
+					{
+						:search_term => 'foo',
+						:normalized => 'Foo',
+						:redirected => 'Foobar'
+					},
+					{
+						:search_term => 'bar',
+						:normalized => 'Bar'
+					},
+					{
+						:search_term => 'a',
+						:normalized => 'A'
+					},
+					{
+						:search_term => 'b',
+						:normalized => 'B'
+					},
+					{
+						:search_term => 'c',
+						:normalized => 'C'
+					},
+					{
+						:search_term => 'Jimmy Fallon'
+					},
+					{
+						:search_term => 'Seth Rogan',
+						:redirected => 'Seth Rogen'
+					},
+					{
+						:search_term => 'Mesopotamia'
+					}
+				]
+				@redirects = [
+					{
+						'from' => 'Foo',
+						'to' => 'Foobar'
+					},
+					{
+						'from' => 'Seth Rogan',
+						'to' => 'Seth Rogen'
+					}
+				]
+				@expected_keys_with_titles = {
+					'foo'=>'Foobar',
+					'bar'=> 'Bar',
+					'a' => 'A',
+					'b' => 'B',
+					'c' => 'C',
+					'Jimmy Fallon' => 'Jimmy Fallon',
+					'Seth Rogan' => 'Seth Rogen',
+					'Mesopotamia' => 'Mesopotamia'
+				}
+			end
+
+			it "must split the search string on the bar and return individual search terms" do
+				wiki_query.query.split('|').must_equal @expected_keys
+			end
+
+			it "must initialize a results map as an array with hashses containing the :search_term" do
+				wiki_query.initialize_map.must_equal @initialized_map
+			end
+
+			it "must get the normalizations from the query result" do
+				wiki_query.get_query_map("normalized").must_equal @normalizations
+			end
+
+			it "must get the redirects from the query result" do
+				wiki_query.get_query_map("redirects").must_equal @redirects
+			end
+
+			it "must store the normalizations in the results map" do
+				wiki_query.get_normalizations_for(@initialized_map, @normalizations).must_equal @expected_normalized_map
+			end
+
+			it "must store the redirects in the results map" do
+				wiki_query.get_redirects_for(@expected_normalized_map, @redirects).must_equal @expected_results_map
+			end
 
 			it "must get a result map for each page" do
-				wiki_query.map_query_to_results.length.must_equal 3
+				wiki_query.map_query_to_results.length.must_equal 8
+			end
+
+			it "must get the complete results map" do
+				wiki_query.map_query_to_results.must_equal @expected_results_map
 			end
 
 			it "must return all of the sites" do
-				wiki_query.pages.length.must_equal 3
+				wiki_query.pages.length.must_equal 8
 			end
 
-			it "must tag the first page with the right query term" do
-				wiki_query.pages['Partners In Health'].title.must_equal 'Partners In Health'
+			it "must have keys for all of the sites that match the original search terms" do
+				wiki_query.pages.keys.sort.must_equal @expected_keys.sort
 			end
 
-			it "must tag the second page with the right query term" do
-				wiki_query.pages['ThoughtWorks'].title.must_equal 'ThoughtWorks'
-			end
+			it "must have all of the keys pointing to the right title" do
+				pages_and_titles = Hash.new
 
-			it "must tag the last page with the right query term" do
-				wiki_query.pages['Accion International'].title.must_equal 'ACCION International'
+				#Populates a hash with all of the keys and their corresponding page titles
+				wiki_query.pages.each do |key, value|
+					pages_and_titles[key] = value.title
+				end
+
+				pages_and_titles.must_equal @expected_keys_with_titles
 			end
 
 		end

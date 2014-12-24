@@ -10,4 +10,7 @@ Gemfile.lock
 .ruby-gemset
 
 # VCR fixtures
-/spec/fixtures/mediawiki_keiki_cassettes/*
+spec/fixtures/mediawiki_keiki_cassettes/wiki_query.yml
+
+# DS Store
+lib/.DS_Store
