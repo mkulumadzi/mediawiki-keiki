@@ -54,3 +54,9 @@ Get the summary of a page
 ```ruby
 puts foo_page.summary
 ```
+
+Get the title of a page
+
+```ruby
+puts foo_page.title
+```
