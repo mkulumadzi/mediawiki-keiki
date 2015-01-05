@@ -2,8 +2,8 @@ Gem::Specification.new do |s|
 
 	# Specifications
 	s.name					= 'mediawiki-keiki'
-	s.version				= '1.0.2'
-	s.date					= '2014-12-24'
+	s.version				= '1.0.3'
+	s.date					= '2015-01-05'
 	s.required_ruby_version	= '~> 2.0'
 	s.summary				= 'MediaWiki Keiki'
 	s.description			= 'A client for the MediaWiki API'
