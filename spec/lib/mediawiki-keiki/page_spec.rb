@@ -44,6 +44,10 @@ describe MediaWiki::Page do
 				page.to_html.include?('<a href=').must_equal true
 			end
 
+			it "must remove extra line breaks" do
+				page.remove_extra_carriage_returns("Foo\n\n\nText").must_equal "Foo\nText"
+			end
+
 			it "must parse the page content to plain text" do
 				page.to_text.include?('<a href=').must_equal false
 			end

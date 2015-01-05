@@ -25,7 +25,11 @@ module MediaWiki
 
 		# Converts the content to plain text
 		def to_text
-			Nokogiri::HTML(to_html).text
+			remove_extra_carriage_returns(Nokogiri::HTML(to_html).text)
+		end
+
+		def remove_extra_carriage_returns(text)
+			text.gsub(/\n{2,}/,"\n")
 		end
 
 		# Returns a short summary that is at least 140 characters long
